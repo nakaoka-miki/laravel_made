@@ -27,7 +27,7 @@ class UserRegistrationController extends Controller
                 ->orWhere('comment', 'LIKE', "%{$keyword}%");
         }
         
-        $blogs = $query->paginate(5);
+        $blogs = $query->latest( 'created_at' )->paginate(5);
         
         return view('user/user_top',[
             'allnotices' => $allnotice,
