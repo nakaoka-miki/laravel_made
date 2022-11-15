@@ -120,8 +120,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
+            </div> 
+        </div>
+        <div id="map" style="height:300px" class="mt-3">
+            <script src="{{ asset('/js/googlemap.js') }}"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyDP2WvisLGCt8x84PX761wdfEcsgSY36_M&callback=initMap" async defer>
+            </script>
         </div>
     </div>
 </main>
