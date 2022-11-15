@@ -35,9 +35,9 @@ class FavoriteController extends Controller
         $user_id = Auth::user()->id;
         $blog = new Blog;
         $favorite = $blog
-        ->join('favorites', 'blogs.id', '=', 'favorites.post_id')
-        ->where('favorites.user_id', '=', $user_id)
-        ->get();
+            ->join('favorites', 'blogs.id', '=', 'favorites.post_id')
+            ->where('favorites.user_id', '=', $user_id)
+            ->get();
 
         return view('favorite/favorite')->with([
             'favorites' => $favorite,
