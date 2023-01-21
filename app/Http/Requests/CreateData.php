@@ -26,6 +26,7 @@ class CreateData extends FormRequest
         return [
             'title' => 'required',
             'comment' => 'required',
+            'image' => 'image',
         ];
     }
 }

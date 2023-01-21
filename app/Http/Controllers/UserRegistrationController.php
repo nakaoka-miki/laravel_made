@@ -121,6 +121,8 @@ class UserRegistrationController extends Controller
         $blog->title = $request->title;
         $blog->region = $request->region;
         $blog->comment = $request->comment;
+        $blog->youtubu = $request->youtubu;
+
         
         $blog->save();
         return redirect('/user_top');

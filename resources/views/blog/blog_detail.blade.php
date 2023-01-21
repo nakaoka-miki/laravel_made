@@ -9,6 +9,7 @@
         <div class='box7'>
                 <div class="container">{!!nl2br(e($detailblog['comment']))!!}</div>
         </div>
+            <iframe class="mt-3" width="500" height="300" src="{{ $detailblog['youtubu'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <div class="d-flex justify-content-between">
             <a href="{{ route('edit.Blog', ['blog' => $detailblog['id']]) }}">
                 <button class="btn btn-primary  ">編集</button>

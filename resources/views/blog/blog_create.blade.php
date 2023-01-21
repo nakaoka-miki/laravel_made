@@ -52,6 +52,19 @@
                 <label for='comment' class='text-left mt-2 ml-3 h5'>本文</label>
                     <textarea rows="10" class='form-control' name='comment' id='comment' placeholder="ここから入力">{{ old('comment') }}</textarea>
             </div>
+
+            <!-- 動画埋め込み-->
+            <div class="form-group">
+                <div class="row mt-5 ml-3">
+                    <div class="col-md-2">
+                        <label for='youtubu' class='mt-3 h6'>参考動画</label>
+                    </div>
+                    <div class="col-md-10">
+                        <input type='text' class='form-control' name='youtubu' id="youtubu" value=""  placeholder="url">
+                    </div>
+                </div>
+            </div>
+
             <div class="d-flex justify-content-around mt-5">
                 <button type="submit" id="submit" class='btn btn-primary w-25'>投稿</button>
                 <button type="button" class='btn btn-outline-danger w-25' onclick="history.back()">戻る</button>

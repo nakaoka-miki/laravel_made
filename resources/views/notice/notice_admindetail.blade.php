@@ -9,6 +9,9 @@
         <div class='box8'>
                 <div class="container">{!!nl2br(e($notice['comment']))!!}</div>
         </div>
+
+        <img class="border border-dark mb-4" src="{{ asset('storage/'.$notice->image) }}" alt="プロフィール画像" width="200" height="200" >
+
         <div class="d-flex justify-content-between">
             <a href="{{ route('edit.Notice',['notice'=>$notice['id']]) }}">
                 <button class="btn btn-primary  ">編集</button>

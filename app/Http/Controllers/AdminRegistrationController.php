@@ -36,6 +36,11 @@ class AdminRegistrationController extends Controller
         $notice->title = $request->title;
         $notice->comment = $request->comment;
         
+
+        $path = $request->image->store('public');
+        $filename = basename($path);
+        $notice ->image = $filename;
+
         $notice->save();
         return redirect('/admin_top');
     }
