@@ -3,26 +3,44 @@
 @section('content')
 <main class="py-4">
     <div class="col-md-8  mx-auto">
-        <div class='card shadow '>
-            <div class='card-body'>
-                <table class="table mt-1">
-                    <thead>
-                        <tr>
-                        <th scope="col">～お知らせ～</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- ここにお知らせを表示する（foreach) -->
-                        @foreach($allnotices as $allnotice)
-                        <tr>
-                        <th scope="col" class='h6'>
-                            <a href="{{ route('detail.notice', ['id' => $allnotice['id']]) }}">{{ $allnotice['title'] }}</a>
-                        </th>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class='card shadow '>
+                    <!-- お知らせ表示 -->
+                    <div class='card-body'>
+                        <table class="table mt-1">
+                            <thead>
+                                <tr>
+                                <th scope="col">～お知らせ～</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- ここにお知らせを表示する（foreach) -->
+                                @foreach($allnotices as $allnotice)
+                                <tr>
+                                <th scope="col" class='h6'>
+                                    <a href="{{ route('detail.notice', ['id' => $allnotice['id']]) }}">{{ $allnotice['title'] }}</a>
+                                </th>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> 
+
+            <!-- 天気予報表示 -->
+            <div class="col-md-3 text-center">
+                @foreach($datas['list'] as $list)
+                    @foreach($list['weather'] as $data)
+                    <h2>今日の天気</h2>
+                    <img src="http://openweathermap.org/img/w/{{ $data['icon'] }}.png" alt="" width="90px">
+                    <p>{{ $data['description'] }}</p>
+                    @endforeach
+                    <p>気温：{{ $list['main']['temp'] }}℃</p>
+                    <p>湿度：{{ $list['main']['humidity'] }}%</p>
+                @endforeach
+            </div> 
         </div>
 
         <div class="d-flex justify-content-between mt-5">
@@ -127,7 +145,7 @@
             <script src="{{ asset('/js/googlemap.js') }}"></script>
             <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=&callback=initMap" async defer>
             </script>
-        </div>      
+        </div> 
     </div>
 </main>
 

@@ -10,28 +10,41 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateData;
 use App\Http\Requests\profile;
+use GuzzleHttp\Client;
+
 
 class UserRegistrationController extends Controller
 {
 
     // TOPページ表示
     public function userindex(Request $request){
+        //ブログ表示
         $notice = new Notice;
         $allnotice = $notice->all()->toArray();
 
+        //検索表示
         $keyword = $request->input('keyword');
         $query = Blog::query();
-        
         if (!empty($keyword)) {
             $query->where('title', 'LIKE', "%{$keyword}%")
                 ->orWhere('comment', 'LIKE', "%{$keyword}%");
         }
-        
         $blogs = $query->latest( 'created_at' )->paginate(5);
+
+        //天気予報表示
+        $cityName = 'Tokyo';
+        $apiKey = '';
+        $url = "http://api.openweathermap.org/data/2.5/forecast?units=metric&lang=ja&q=$cityName&cnt=1&units=metric&appid=$apiKey";
+        $method = "GET";
+        $client = new Client();
+        $response = $client->request($method, $url);
+        $datas = $response->getBody();
+        $datas = json_decode($datas, true);
         
         return view('user/user_top',[
             'allnotices' => $allnotice,
             'blogs' => $blogs,
+            'datas' => $datas,
         ]);
     }
 
